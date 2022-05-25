@@ -16,9 +16,9 @@ use Faker\Provider\Internet;
 use Faker\Provider\DateTime;
 
 // FACTORY
-use App\Models\Person;
+use App\Models\Applicant;
 
-class PersonSeeder extends Seeder
+class ApplicantSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -28,9 +28,10 @@ class PersonSeeder extends Seeder
     public function run()
     {
         // HARD CODED SEEDER.
-        DB::table('persons')->insert([
+        DB::table('applicants')->insert([
             'first_name' => 'Tomi',
             'last_name' => 'Ristic',
+            'photo' => 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
             'phone' => '0628885263',
             'address' => 'Laan Corpus Den Hoorn 106, 9728 JR Groningen',
             'email' => 'tomi@codegorilla.nl',
@@ -40,9 +41,10 @@ class PersonSeeder extends Seeder
         ]);
 
         // SEMI RANDOM DATA. WEL VULLING ZODAT JE OP JE SCHERM IETS KAN ZIEN. NIET HANDIG.
-        DB::table('persons')->insert([
+        DB::table('applicants')->insert([
             'first_name' => Str::random(10),
             'last_name' => Str::random(10),
+            'photo' => 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
             'address' => Str::random(10),
             'phone' => Str::random(9),
             'email' => Str::random(10) . '@gmail.com',
@@ -57,9 +59,10 @@ class PersonSeeder extends Seeder
         $faker = Faker::create();
 
         // USE FAKER TO GENERATE DATA
-        DB::table('persons')->insert([
+        DB::table('applicants')->insert([
             'first_name' => $faker->firstName(),
             'last_name' => $faker->lastName(),
+            'photo' => $faker->imageUrl(640, 480, 'animals', true),
             'address' => $faker->address,
             'phone' => $faker->phoneNumber,
             'email' => $faker->email(),
@@ -69,7 +72,7 @@ class PersonSeeder extends Seeder
         ]);
 
         // USE YOUR NEWLY CREATED FACTORY TO CREATE DUMMY DATA.
-        $persons = Person::factory()->count(20)->create();
+        $applicants = Applicant::factory()->count(20)->create();
 
     }
 }

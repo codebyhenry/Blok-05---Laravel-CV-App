@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Person>
  */
-class PersonFactory extends Factory
+class ApplicantFactory extends Factory
 {
 
     /**
@@ -20,6 +20,7 @@ class PersonFactory extends Factory
             'first_name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName(),
             'address' => $this->faker->address,
+            'photo' => $this->faker->imageUrl(640, 480, 'animals', true),
             'phone' => $this->faker->phoneNumber,
             'email' => $this->faker->email(),
             'date_of_birth' => $this->faker->dateTimeBetween('-30 years', 'now'),

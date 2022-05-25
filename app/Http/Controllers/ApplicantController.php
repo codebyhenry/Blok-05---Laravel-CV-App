@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// INCLUDE THE MODEL YOU NEED HERE.
-use App\Models\Person;
 
-class PersonController extends Controller
+// INCLUDE THE MODEL YOU NEED HERE.
+use App\Models\Applicant;
+
+class ApplicantController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,16 +17,10 @@ class PersonController extends Controller
     public function index()
     {
         //MET JE MODEL KUN JE JE DATA OPHALEN. ER ZIJN MEER FUNCTIES ZOALS DE ALL FUNCTION.
-        $persons = Person::all();
-
-        // OPTIONAL ATTRIBUTES TO USE IN YOUR TABLE HEADING
-        $attributes = array_keys($persons->first()->toArray());
+        $applicants = Applicant::all();
 
         // GEEF JE OPGEHAALDE DATA DOOR AAN JE VIEW FILE. TIP: view('map.map.file', [data])
-        return view('persons.index', [
-            'persons' => $persons,
-            'attributes' => $attributes
-        ]);
+        return view('applicants.index', ['applicants' => $applicants]);
 
     }
 

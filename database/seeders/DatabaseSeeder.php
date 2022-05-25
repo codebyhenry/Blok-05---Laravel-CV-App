@@ -14,15 +14,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        //CALL A SINGLE SEEDER FILE.
-        $this->call(PersonSeeder::class);
 
-        // CALLING MULTIPLE SEEDER CLASSES.
-        // $this->call([
-        //     PersonSeeder::class,
-        //     JobsSeeder::class,
-        //     EducationSeeder::class,
-        //     LanguageSeeder::class
-        // ]);
+        //CALL A SINGLE SEEDER FILE.
+        $this->call(ApplicantSeeder::class);
+
     }
 }
