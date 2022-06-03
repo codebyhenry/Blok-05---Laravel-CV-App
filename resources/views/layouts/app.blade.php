@@ -3,17 +3,16 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
     </head>
 <body class="h-full">
 
+    <div class="min-h-full bg-indigo-900">
+      <div>
 
-
-    <div class="min-h-full">
-      <div class="bg-gray-800 pb-32">
-        <nav class="bg-gray-800">
+        <nav class="">
           <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="border-b border-gray-700">
+            <div class="border-b border-white">
               <div class="flex items-center justify-between h-16 px-4 sm:px-0">
                 <div class="flex items-center">
                   <div class="flex-shrink-0">
@@ -23,7 +22,6 @@
                     <div class="ml-10 flex items-baseline space-x-4">
                       <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                       <a href="/applicants" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Dashboard</a>
-
                     </div>
                   </div>
                 </div>
@@ -31,12 +29,13 @@
 
         <header class="py-10">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 class="text-3xl font-bold text-white">Dashboard</h1>
+            <h1 class="text-3xl font-bold text-white">@yield('heading')</h1>
           </div>
         </header>
+
       </div>
 
-      <main class="-mt-32">
+      <main>
         <div class="max-w-7xl mx-auto pb-12 px-4 sm:px-6 lg:px-8">
           <!-- Replace with your content -->
           @yield('body')

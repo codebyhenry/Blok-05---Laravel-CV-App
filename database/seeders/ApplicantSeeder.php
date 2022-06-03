@@ -35,7 +35,7 @@ class ApplicantSeeder extends Seeder
             'phone' => '0628885263',
             'address' => 'Laan Corpus Den Hoorn 106, 9728 JR Groningen',
             'email' => 'tomi@codegorilla.nl',
-            'date_of_birth' => '01-05-1993',
+            'date_of_birth' => '1993-05-01',
             'nationality' => 'Nederlandse',
             'linkedin_profile' => 'https://www.linkedin.com/in/tomi-ristic-dhevak/'
         ]);
@@ -48,7 +48,7 @@ class ApplicantSeeder extends Seeder
             'address' => Str::random(10),
             'phone' => Str::random(9),
             'email' => Str::random(10) . '@gmail.com',
-            'date_of_birth' => rand(0,30) . '-' . rand(1,50) . '-' . rand(1900, 2022),
+            'date_of_birth' => rand(1900, 2020) . '-' . rand(1,12) . '-' . rand(1, 30),
             'nationality' => Str::random(10),
             'linkedin_profile' => 'https://www.' . Str::random(10) . '.nl',
         ]);

@@ -17,11 +17,11 @@ return new class extends Migration
             $table->id();
             $table->text('first_name');
             $table->text('last_name');
-            $table->text('photo');
+            $table->text('photo')->nullable();
             $table->text('address');
             $table->text('phone');
             $table->text('email');
-            $table->text('date_of_birth');
+            $table->date('date_of_birth');
             $table->text('nationality');
             $table->text('linkedin_profile')->nullable();
             $table->timestamps();

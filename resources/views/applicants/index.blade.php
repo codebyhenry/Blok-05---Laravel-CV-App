@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('heading')
+    Dashboard
+@endsection
+
 @section('body')
 
     <!-- IGNORE THIS - IAM INCLUDING A HEADING WITH SOME EXPLANATION. -->
@@ -9,11 +13,11 @@
     <div>
       <div class="sm:flex sm:items-center">
         <div class="sm:flex-auto">
-          <h1 class="text-xl font-semibold text-gray-900">Applicants</h1>
-          <p class="mt-2 text-sm text-gray-700">A list of all the applicants displayed on a dashboard including first name, last name, email and phone.</p>
+          <h1 class="text-xl font-semibold text-white">Applicants</h1>
+          <p class="mt-2 text-sm text-white">A list of all the applicants displayed on a dashboard including first name, last name, email and phone.</p>
         </div>
         <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-          <button type="button" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Add Applicant</button>
+          <a href="{{ route('applicants.create') }}" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Add Applicant</a>
         </div>
       </div>
       <div class="mt-8 flex flex-col">
@@ -40,9 +44,16 @@
                       <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $applicant->email }}</td>
                       <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $applicant->phone }}</td>
                       <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                        <a href="#" class="text-indigo-600 hover:text-indigo-900 mr-4">Show</a>
-                        <a href="#" class="text-indigo-600 hover:text-indigo-900 mr-4">Edit</a>
-                        <a href="#" class="text-indigo-600 hover:text-indigo-900">Delete</a>
+                        <form action="{{ route('applicants.destroy', $applicant->id) }}" method="POST">
+                        <!-- SHOW BUTTON -->
+                        <a href="{{ route('applicants.show', $applicant->id) }}" class="text-indigo-600 hover:text-indigo-900 mr-4">Details</a>
+                        <!-- EDIT BUTTON -->
+                        <a href="{{ route('applicants.edit', $applicant->id) }}" class="text-indigo-600 hover:text-indigo-900 mr-4">Edit</a>
+                        <!-- DELETE BUTTON -->
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit" class="text-indigo-600 hover:text-indigo-900 mr-4">Delete</button>
+                        </form>
                       </td>
                     </tr>
                     @endforeach

@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Applicant extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['_token', 'first_name', 'last_name', 'photo', 'address', 'email', 'phone', 'date_of_birth', 'nationality', 'linkedin_profile'];
+
 }

@@ -31,7 +31,7 @@ class ApplicantController extends Controller
      */
     public function create()
     {
-        //
+        return view('applicants.create');
     }
 
     /**
@@ -42,7 +42,14 @@ class ApplicantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // CREATE A NEW APPLICANT
+        $applicant = Applicant::create($request->except('_token'));
+
+        // USE THE MODEL TO STORE THE DATA INSIDE THE TABLE
+        $applicant->save();
+
+        // REDIRECT USER TO THE OVERVIEW
+        return redirect()->route('applicants.index');
     }
 
     /**
@@ -53,7 +60,9 @@ class ApplicantController extends Controller
      */
     public function show($id)
     {
-        //
+        $applicant = Applicant::findOrFail($id);
+
+        return view('applicants.show', ['applicant' => $applicant]);
     }
 
     /**
@@ -64,7 +73,9 @@ class ApplicantController extends Controller
      */
     public function edit($id)
     {
-        //
+        $applicant = Applicant::findOrFail($id);
+
+        return view('applicants.edit', ['applicant' => $applicant]);
     }
 
     /**
@@ -76,7 +87,8 @@ class ApplicantController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $applicant = Applicant::findOrFail($id);
+
     }
 
     /**
@@ -87,6 +99,10 @@ class ApplicantController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $applicant = Applicant::findOrFail($id);
+
+        $applicant->delete();
+
+        return redirect()->route('applicants.index');
     }
 }
