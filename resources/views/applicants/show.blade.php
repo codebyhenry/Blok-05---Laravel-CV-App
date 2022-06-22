@@ -23,7 +23,8 @@
      <div class="mt-1 sm:mt-0 sm:col-span-2">
        <div class="flex items-center">
        <span class="h-12 w-12 rounded-full overflow-hidden bg-gray-100">
-         <img class="h-full object-cover" src="{{ $applicant->photo }}">
+           <!-- THE STORAGE -->
+         <img class="h-full object-cover" src="{{ url('storage/'.$applicant->photo) }}">
        </span>
       </div>
      </div>

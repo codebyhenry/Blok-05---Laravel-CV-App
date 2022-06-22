@@ -6,12 +6,15 @@
 
 @section('body')
 
-<form method="POST" action="{{ route('applicants.store') }}" class="space-y-8 divide-y divide-gray-200 bg-white p-8 rounded-lg">
+<form method="POST" action="{{ route('applicants.update', $applicant->id) }}" enctype="multipart/form-data" class="space-y-8 divide-y divide-gray-200 bg-white p-8 rounded-lg">
 
     <div class="sm:space-y-5">
 
         <!-- CSRF NEEDS TO BE INCLUDED IN EVERY FORM. -->
         @csrf
+
+        <!-- ADD THE PUT BLADE DIRECTIVE. -->
+        @method('PUT')
 
         <div>
 
@@ -28,7 +31,7 @@
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                         <div class="flex items-center">
                             <span class="h-12 w-12 rounded-full overflow-hidden bg-gray-100">
-                              <img class="h-full object-cover" src="{{ $applicant->photo }}">
+                              <img class="h-full object-cover" src="{{ asset('storage/'.$applicant->photo) }}">
                             </span>
                         <input type="file" name="photo" class="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                         </div>
@@ -103,8 +106,9 @@
                 <label for="country" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Nationality </label>
                 <div class="mt-1 sm:mt-0 sm:col-span-2">
                 <select id="nationality" name="nationality" autocomplete="nationality" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
-                    <option>Dutch</option>
-                    <option>Other</option>
+                    <!-- SET THE DROPDOWN SELECTED STATE THAT IS SHOWN ON PAGE LOAD BASED ON THE NATIONALITY. -->
+                    <option @if($applicant->nationality == "Dutch") selected @endif>Dutch</option>
+                    <option @if($applicant->nationality == "Other") selected @endif>Other</option>
                 </select>
                 </div>
             </div>

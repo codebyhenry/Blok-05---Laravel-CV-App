@@ -72,7 +72,7 @@ class ApplicantSeeder extends Seeder
         ]);
 
         // USE YOUR NEWLY CREATED FACTORY TO CREATE DUMMY DATA.
-        $applicants = Applicant::factory()->count(20)->create();
+        $applicants = Applicant::factory()->count(5)->create();
 
     }
 }
