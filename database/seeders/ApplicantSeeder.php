@@ -17,6 +17,7 @@ use Faker\Provider\DateTime;
 
 // FACTORY
 use App\Models\Applicant;
+use App\Models\Skill;
 
 class ApplicantSeeder extends Seeder
 {
@@ -72,7 +73,9 @@ class ApplicantSeeder extends Seeder
         ]);
 
         // USE YOUR NEWLY CREATED FACTORY TO CREATE DUMMY DATA.
-        $applicants = Applicant::factory()->count(5)->create();
+        $applicants = Applicant::factory()->count(5)->create()->each(function ($applicant) {
+            // Skill::factory()->count(5)->create()->
+        });
 
     }
 }

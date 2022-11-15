@@ -11,4 +11,7 @@ class Applicant extends Model
 
     protected $fillable = ['_token', 'first_name', 'last_name', 'photo', 'address', 'email', 'phone', 'date_of_birth', 'nationality', 'linkedin_profile'];
 
+    public function skills() {
+        return $this->hasMany(Skill::class);
+    }
 }

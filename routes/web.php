@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 // INCLUDE THE CONTROLLERS YOU NEED HERE.
 use App\HTTP\Controllers\ApplicantController;
+use App\HTTP\Controllers\SkillController;
 
 // HERE I REDIRECT MY DEFAULT ROUTE TO MY PERSONS.
 Route::get('/', function(){
@@ -17,3 +18,4 @@ Route::get('/applicants', [ApplicantController::class, 'index'])->name('applican
 
 // ROUTE RESOURCES ARE USED TO COMBINE ALL YOUR BASIC ROUTES.
 Route::resource('/applicants', ApplicantController::class);
+Route::resource('/skills', SkillController::class);

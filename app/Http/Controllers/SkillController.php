@@ -5,24 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 // INCLUDE THE MODEL YOU NEED HERE.
-use App\Models\Applicant;
+use App\Models\Skill;
 
-class ApplicantController extends Controller
+class SkillController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //MET JE MODEL KUN JE JE DATA OPHALEN. ER ZIJN MEER FUNCTIES ZOALS DE ALL FUNCTION.
-        $applicants = Applicant::all();
 
-        // GEEF JE OPGEHAALDE DATA DOOR AAN JE VIEW FILE. TIP: view('map.map.file', [data])
-        return view('applicants.index', ['applicants' => $applicants]);
-
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -31,7 +18,7 @@ class ApplicantController extends Controller
      */
     public function create()
     {
-        return view('applicants.create');
+        return view('skills.create');
     }
 
     /**
@@ -68,8 +55,6 @@ class ApplicantController extends Controller
     {
         // RETRIEVE APPLICANT WITH ID PASSED THROUGH ROUTE OR FAIL.
         $applicant = Applicant::findOrFail($id);
-
-        $applicant->load('skills');
 
         // RETURN SHOW VIEW BLADE AND PASS THE APPLICANT DATA
         return view('applicants.show', ['applicant' => $applicant]);
